@@ -1,0 +1,79 @@
+---
+
+---
+
+# RTC
+
+## Modules
+
+```mdx-code-block
+import DocCardList from '@theme/DocCardList';
+
+<DocCardList />
+```
+
+RTC HAL module driver.  [More...](#detailed-description)
+
+
+## Detailed Description
+
+RTC HAL module driver.
+
+The Real-Time Clock (RTC) is an independrnt BCD/Binary timer/counter. The RTC provides:
+
+* a time-of-day clock/calendar;
+* programmable alarms;
+* a timestamp feature;
+* an automatic wake-up timer to manage the mcu in all low-power modes.
+
+The RTC driver is part of the backup domain and thus can be functional in all low-power modes when it is clocked by the LSE and powered through the VBAT pin.
+
+
+### RTC operating condition
+
+The real-time clock is part of the backup domain and can be powered from VBAT when the main VDD supply is powered off. To retain the content of the RTC registers and supply the RTC when VDD is turned off, the VBAT can be connected to an optional standby voltage supplied by a battery or by another source.
+
+The RTC clock called RTCCLK can come from different sources:
+
+* HSE with a prescaler
+* LSE
+* LSI with a prescaler
+
+By default all the RTC is configured to work with a LSE of 32.768 kHz. To work in low powers mode the RTC clock source needs to be the LSE or LSI.
+
+
+### Backup domain reset
+
+The backup domain reset sets all RTC registers and the RCC_BDCR register to their reset values. A backup domain reset occurs when :
+
+* triggered by setting the BDRST bit in the RCC backup domain control register (RCC_BDCR).
+* totally powering off the microcontroller.
+
+
+### Backup domain access
+
+After reset, the backup domain is protected against possible unwanted write accesses. To enable access to the RTC domain and RTC registers, proceed as follows:
+
+* Enable the power controller interface clock using the HAL_RCC_PWR_EnableClock function.
+* Enable access to backup domain using the HAL_PWR_DisableBackupDomainWriteProtection function (DBP bit in PWR_DBPR).
+* Select the RTC clock source using the HAL_RCC_RTC_SetKernelClkSource function.
+* Enable RTCAPB clock using the HAL_RCC_RTCAPB_EnableClock function.
+
+
+### RTC and microcontroller low power modes
+
+The MCU can be woken up from a low power mode by a RTC function. The RTC functions are the :
+
+* Alarm A events.
+* Alarm B events.
+* Wake-up timer events.
+* Timestamp events. These RTC functions can wake-up the system from the all low power modes. The system can also wake-up low power modes without depending on an external interruption by using the alarms and wake-up timer events. Wake-up from Stop and Standby mode is possible only when the RTC clock source is LSE or LSI. For Shutdown mode it is only possible when the RTC cloc source is LSE.
+
+
+
+
+
+
+-------------------------------
+
+Updated on 2023-10-05 at 10:57:34 +0200

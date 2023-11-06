@@ -1,0 +1,394 @@
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+# RTC exported alarm functions
+
+Exported alarms functions.  [More...](#detailed-description)
+
+## Functions
+
+* hal_status_t **[HAL_RTC_ALARM_SetConfig](#hal_rtc_alarm_setconfig)**([hal_rtc_alarm_t](../Enums/group__RTC__Exported__Enums__Alarm#hal_rtc_alarm_t) alarm, const [hal_rtc_alarm_config_t](../Structures/structhal__rtc__alarm__config__t) * p_config_alarm)
+* void  **[HAL_RTC_ALARM_GetConfig](#hal_rtc_alarm_getconfig)**([hal_rtc_alarm_t](../Enums/group__RTC__Exported__Enums__Alarm#hal_rtc_alarm_t) alarm, [hal_rtc_alarm_config_t](../Structures/structhal__rtc__alarm__config__t) * p_config_alarm)
+* hal_status_t  **[HAL_RTC_ALARM_SetDateTime](#hal_rtc_alarm_setdatetime)**([hal_rtc_alarm_t](../Enums/group__RTC__Exported__Enums__Alarm#hal_rtc_alarm_t) alarm, const [hal_rtc_alarm_date_time_t](../Structures/structhal__rtc__alarm__date__time__t) * p_date_time)
+* void  **[HAL_RTC_ALARM_GetDateTime](#hal_rtc_alarm_getdatetime)**([hal_rtc_alarm_t](../Enums/group__RTC__Exported__Enums__Alarm#hal_rtc_alarm_t) alarm, [hal_rtc_alarm_date_time_t](../Structures/structhal__rtc__alarm__date__time__t) * p_date_time)
+* void  **[HAL_RTC_ALARM_Stop](#hal_rtc_alarm_stop)**([hal_rtc_alarm_t](../Enums/group__RTC__Exported__Enums__Alarm#hal_rtc_alarm_t) alarm)
+* hal_status_t  **[HAL_RTC_ALARM_PollForEvent](#hal_rtc_alarm_pollforevent)**([hal_rtc_alarm_t](../Enums/group__RTC__Exported__Enums__Alarm#hal_rtc_alarm_t) alarm, uint32_t timeout_ms)
+* hal_status_t  **[HAL_RTC_ALARM_SetBinaryTime](#hal_rtc_alarm_setbinarytime)**([hal_rtc_alarm_t](../Enums/group__RTC__Exported__Enums__Alarm#hal_rtc_alarm_t) alarm, uint32_t alarm_subsecond)
+* uint32_t  **[HAL_RTC_ALARM_GetBinaryTime](#hal_rtc_alarm_getbinarytime)**([hal_rtc_alarm_t](../Enums/group__RTC__Exported__Enums__Alarm#hal_rtc_alarm_t) alarm)
+* hal_status_t  **[HAL_RTC_ALARM_SetBinarySubSecondMask](#hal_rtc_alarm_setbinarysubsecondmask)**([hal_rtc_alarm_t](../Enums/group__RTC__Exported__Enums__Alarm#hal_rtc_alarm_t) alarm, uint32_t subsec_mask)
+* uint32_t  **[HAL_RTC_ALARM_GetBinarySubSecondMask](#hal_rtc_alarm_getbinarysubsecondmask)**([hal_rtc_alarm_t](../Enums/group__RTC__Exported__Enums__Alarm#hal_rtc_alarm_t) alarm)
+
+## Detailed Description
+
+Exported alarms functions.
+
+The RTC unit provides two programmable alarms. The alarms triggers when the calendar subseconds, seconds, minutes, hours, month day or weekday match the values of the alarm. Each field can be independently masked by setting [hal_rtc_alarm_date_time_t::mask](../Structures/structhal__rtc__alarm__date__time__t#variable-mask). When the alarm triggers it can be automatically cleared by setting the parameter [hal_rtc_alarm_config_t::auto_clear](../Structures/structhal__rtc__alarm__config__t#variable-auto_clear) to [HAL_ALARM_AUTO_CLEAR_ENABLE](../Enums/group__RTC__Exported__Enums__Alarm#enumvalue-hal_alarm_auto_clear_enable).
+
+To update the alarms configuration, RTC needs to be in initialization mode or the alarms shall be disabled by using [HAL_RTC_EnterInitMode](group__RTC__Exported__Functions__Write__Init#function-hal_rtc_enterinitmode) or [HAL_RTC_ALARM_Stop](group__RTC__Exported__Functions__Alarms#hal_rtc_alarm_stop) respectively.
+
+
+### Binary mode
+
+When using the binary mode only the subseconds registers are compared. A dedicated API is given to optimize the code. The subseconds down-counter register can be reloaded every time the alarms triggers which means that the subseconds down-counter register is running from 0xFFFF FFFF to the value set in the subseconds registers of the alarm. This can only be used in binary mode. This is configured by setting [hal_rtc_alarm_config_t::subsec_auto_reload](../Structures/structhal__rtc__alarm__config__t#variable-subsec_auto_reload) to [HAL_RTC_ALARM_SUBSECONDS_AUTO_RELOAD_ENABLE](../Enums/group__RTC__Exported__Enums__Alarm#enumvalue-hal_rtc_alarm_subseconds_auto_reload_enable).
+
+
+## Functions Documentation
+
+### HAL_RTC_ALARM_SetConfig
+
+
+<details>
+<summary> Prototype </summary>
+
+```
+hal_status_t HAL_RTC_ALARM_SetConfig(
+    hal_rtc_alarm_t alarm,
+    const hal_rtc_alarm_config_t * p_config_alarm
+)
+```
+
+</details>
+
+Configure the alarm parameters.
+
+**Parameters**:
+
+  * **alarm** : *[hal_rtc_alarm_t](../Enums/group__RTC__Exported__Enums__Alarm#hal_rtc_alarm_t)*
+    * Select the alarm A or B.
+  * **p_config_alarm** : *[hal_rtc_alarm_config_t](../Structures/structhal__rtc__alarm__config__t)* *
+    * Pointer to the alarm configuration instance.
+
+
+**Returns**:
+
+  * **HAL_OK**
+  * **HAL_INVALID_PARAM**
+    * when `p_config_alarm` is NULL.
+  * **HAL_ERROR**
+    * if the alarm is started AND the RTC is not in initializationmode.
+  * **HAL_ERROR**
+    * if `p_config_alarm->subsec_auto_reload` is set to LL_RTC_ALMA_SUBSECONDBIN_AUTOCLR_YES and RTC is in BCD or Mixed mode.
+
+
+:::note
+
+[hal_rtc_alarm_config_t::subsec_auto_reload](../Structures/structhal__rtc__alarm__config__t#subsec_auto_reload) is only used in binary mode.
+
+:::
+
+### HAL_RTC_ALARM_GetConfig
+
+
+<details>
+<summary> Source code </summary>
+
+```
+void HAL_RTC_ALARM_GetConfig(
+    hal_rtc_alarm_t alarm,
+    hal_rtc_alarm_config_t * p_config_alarm)
+{
+
+  ASSERT_DBG_PARAM(p_config_alarm != NULL);
+  ASSERT_DBG_PARAM(IS_RTC_ALARM(alarm));
+
+  p_config_alarm->subsec_auto_reload = (hal_rtc_alarm_subseconds_auto_reload_t)
+                                       LL_RTC_ALM_GetBinAutoClr(RTC, (uint32_t) alarm);
+  p_config_alarm->auto_clear = (hal_rtc_alarm_auto_clear_t) LL_RTC_ALM_GetFlagAutoClr(RTC, (uint32_t) alarm);
+
+}
+```
+
+</details>
+
+Retrieve the alarm configuration.
+
+**Parameters**:
+
+  * **alarm** : *[hal_rtc_alarm_t](../Enums/group__RTC__Exported__Enums__Alarm#hal_rtc_alarm_t)*
+    * Select the alarm A or B.
+  * **p_config_alarm** : *[hal_rtc_alarm_config_t](../Structures/structhal__rtc__alarm__config__t)* * p_config_alarm
+    * Pointer to the alarm configuration instance.
+
+
+### HAL_RTC_ALARM_SetDateTime
+
+<details>
+<summary> Prototype </summary>
+
+```
+hal_status_t HAL_RTC_ALARM_SetDateTime(
+    hal_rtc_alarm_t alarm,
+    const hal_rtc_alarm_date_time_t * p_date_time
+)
+```
+
+</details>
+
+Configure the alarm date and time.
+
+**Parameters**:
+
+  * **alarm** : *[hal_rtc_alarm_t](../Enums/group__RTC__Exported__Enums__Alarm#hal_rtc_alarm_t)*
+    * Select the alarm A or B.
+  * **p_date_time** : *[hal_rtc_alarm_date_time_t](../Structures/structhal__rtc__alarm__date__time__t)* * p_date_time
+    * Pointer to the alarm date and time instance.
+
+
+**Returns**:
+
+  * **HAL_OK**
+  * **HAL_INVALID_PARAM**
+    * when `p_date_time` is NULL.
+  * **HAL_ERROR**
+    * if the alarm is started AND the RTC is not in initialization mode.
+
+
+:::caution
+
+The synchronous prescaler value, [hal_rtc_config_t::synch_prediv](../Structures/structhal__rtc__config__t#synch_prediv), must be superior to 3 when seconds are unmasked.
+
+:::
+
+### HAL_RTC_ALARM_GetDateTime
+
+<details>
+<summary> Prototype </summary>
+
+```
+void HAL_RTC_ALARM_GetDateTime(
+    hal_rtc_alarm_t alarm,
+    hal_rtc_alarm_date_time_t * p_date_time
+)
+```
+</details>
+
+Retrieve the alarm date and time.
+
+**Parameters**:
+
+  * **alarm** : *[hal_rtc_alarm_t](../Enums/group__RTC__Exported__Enums__Alarm#hal_rtc_alarm_t)*
+    * Select the alarm A or B.
+  * **p_date_time** : *[hal_rtc_alarm_date_time_t](../Structures/structhal__rtc__alarm__date__time__t)* * p_date_time
+    * Pointer to the alarm date and time instance.
+
+
+### HAL_RTC_ALARM_Start
+
+<details>
+<summary> Prototype </summary>
+
+```
+void HAL_RTC_ALARM_Start(
+    hal_rtc_alarm_t alarm,
+    uint32_t en_interruption
+)
+```
+
+</details>
+
+Start the alarm.
+
+**Parameters**:
+
+  * **alarm** : *[hal_rtc_alarm_t](../Enums/group__RTC__Exported__Enums__Alarm#hal_rtc_alarm_t)*
+    * Select the alarm A or B.
+  * **en_interruption** : *uint32_t*
+    * Enable the interruption
+    * [HAL_RTC_ALARM_IT_DISABLE](../Defines/group__RTC__Exported__Defines__Alarm__Interrupts)
+    * [HAL_RTC_ALARM_IT_ENABLE](../Defines/group__RTC__Exported__Defines__Alarm__Interrupts)
+
+
+### HAL_RTC_ALARM_Stop
+
+<details>
+<summary> Prototype </summary>
+
+```
+void HAL_RTC_ALARM_Stop(
+    hal_rtc_alarm_t alarm
+)
+```
+
+</details>
+
+Stop the alarm.
+
+**Parameters**:
+
+  * **alarm** : *[hal_rtc_alarm_t](../Enums/group__RTC__Exported__Enums__Alarm#hal_rtc_alarm_t)*
+    * Select the alarm A or B.
+
+
+### HAL_RTC_ALARM_PollForEvent
+
+<details>
+<summary> Prototype </summary>
+
+```
+hal_status_t HAL_RTC_ALARM_PollForEvent(
+    hal_rtc_alarm_t alarm,
+    uint32_t timeout_ms
+)
+```
+
+</details>
+
+Poll for an alarm event.
+
+**Parameters**:
+
+  * **alarm** : *[hal_rtc_alarm_t](../Enums/group__RTC__Exported__Enums__Alarm#hal_rtc_alarm_t)*
+    * Select the alarm A or B.
+  * **timeout_ms** : *uint32_t*
+    * Timeout duration.
+
+
+**Returns**:
+
+  * **HAL_OK**
+  * **HAL_TIMEOUT**
+    *when reaching the timeout during polling.
+
+
+### HAL_RTC_ALARM_SetBinaryTime
+
+<details>
+<summary> Prototype </summary>
+
+```
+hal_status_t HAL_RTC_ALARM_SetBinaryTime(
+    hal_rtc_alarm_t alarm,
+    uint32_t alarm_subsecond
+)
+```
+
+</details>
+
+Program the alarm subseconds.
+
+**Parameters**:
+
+  * **alarm** : *[hal_rtc_alarm_t](../Enums/group__RTC__Exported__Enums__Alarm#hal_rtc_alarm_t)*
+    * Select the alarm A or B.
+  * **alarm_subsecond** : *uint32_t*
+    * Alarm subsecond value.
+
+
+**Returns**:
+
+  * **HAL_OK**
+  * **HAL_ERROR**
+
+
+:::note
+
+This function can be used only in binary mode, but can be used in BCD or mixed mode. Prefer [HAL_RTC_ALARM_SetDateTime](group__RTC__Exported__Functions__Alarms#hal_rtc_alarm_setdatetime) to program the alarm in BCD or mixed mode.
+
+:::
+
+### HAL:::_RTC_ALARM_GetBinaryTime
+
+<details>
+<summary> Prototype </summary>
+
+```
+uint32_t HAL_RTC_ALARM_GetBinaryTime(
+    hal_rtc_alarm_t alarm
+)
+```
+
+</details>
+
+Retrieve the alarm subseconds.
+
+**Parameters**:
+
+  * **alarm** : *[hal_rtc_alarm_t](../Enums/group__RTC__Exported__Enums__Alarm#hal_rtc_alarm_t)*
+    * Select the alarm A or B.
+
+
+**Returns**:
+
+  * **uint32_t**
+    * Alarm subseconds.
+
+
+:::note
+
+This function shall be used only in binary mode, but can be used in BCD or mixed mode. Prefer [HAL_RTC_ALARM_GetDateTime](group__RTC__Exported__Functions__Alarms#hal_rtc_alarm_getdatetime) to retrieve alarm subseconds alarm in BCD or mixed mode.
+
+:::
+
+### HAL_RTC_ALARM_SetBinarySubSecondMask
+
+<details>
+<summary> Prototype </summary>
+
+```
+hal_status_t HAL_RTC_ALARM_SetBinarySubSecondMask(
+    hal_rtc_alarm_t alarm,
+    uint32_t subsec_mask
+)
+```
+
+</details>
+
+Program the alarm subseconds mask.
+
+**Parameters**:
+
+  * **alarm** : *[hal_rtc_alarm_t](../Enums/group__RTC__Exported__Enums__Alarm#hal_rtc_alarm_t)*
+    * Select the alarm A or B.
+  * **subsec_mask** : *uint32_t*
+    * Alarm subsecond mask.
+
+
+**Returns**:
+
+  * **HAL_OK**
+
+
+:::note
+
+This function shall be used only in binary mode, but can be used in BCD or mixed mode. Prefer [HAL_RTC_ALARM_SetDateTime](group__RTC__Exported__Functions__Alarms#hal_rtc_alarm_setdatetime) to program the alarm in BCD or mixed mode.
+
+:::
+
+### HAL:::_RTC_ALARM_GetBinarySubSecondMask
+
+<details>
+<summary> Prototype </summary>
+
+```
+uint32_t HAL_RTC_ALARM_GetBinarySubSecondMask(
+    hal_rtc_alarm_t alarm
+)
+```
+
+</details>
+
+Retrieve the alarm subseconds mask.
+
+**Parameters**:
+
+  * **alarm** : *[hal_rtc_alarm_t](../Enums/group__RTC__Exported__Enums__Alarm#hal_rtc_alarm_t)*
+    * Select the alarm A or B.
+
+
+**Returns**:
+
+  * **uint32_t**
+    * Alarm subseconds mask.
+
+
+:::note
+
+This function shall be used in binary mode, but can be used in BCD or mixed mode. Prefer [HAL_RTC_ALARM_GetDateTime](group__RTC__Exported__Functions__Alarms#hal_rtc_alarm_getdatetime) to retrieve alarm subseconds mask in BCD or mixed mode.
+
+:::
+
+
+
+-------------------------------
+
+Updated on 2023-10-05 at 10:57:34 +0200

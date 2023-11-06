@@ -1,0 +1,8 @@
+{
+  "label": "RTC",
+  "position": 1,
+  "link": {
+    "type": "generated-index",
+    "description": "Driver RTC"
+  }
+}

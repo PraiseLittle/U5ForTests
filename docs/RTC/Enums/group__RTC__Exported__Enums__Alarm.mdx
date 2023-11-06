@@ -1,0 +1,148 @@
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+# RTC exported alarm enumerations
+
+## Types
+
+
+* **hal_rtc_alarm_day_type_selection_t**
+* **hal_rtc_alarm_t**
+* **hal_rtc_alarm_auto_clear_t**
+* **hal_rtc_alarm_subseconds_auto_reload_t**
+
+## Types Documentation
+
+### Proposition 1
+
+<Tabs
+  defaultValue="hal_rtc_alarm_day_type_selection_t"
+  values={[
+    {label: 'hal_rtc_alarm_day_type_selection_t', value: 'hal_rtc_alarm_day_type_selection_t'},
+    {label: 'hal_rtc_alarm_t', value: 'hal_rtc_alarm_t'},
+    {label: 'hal_rtc_alarm_auto_clear_t', value: 'hal_rtc_alarm_auto_clear_t'},
+    {label: 'hal_rtc_alarm_subseconds_auto_reload_t', value: 'hal_rtc_alarm_subseconds_auto_reload_t'}
+  ]}>
+  <TabItem value="hal_rtc_alarm_day_type_selection_t">
+  <h3> Definition</h3>
+
+    Alarm date weekday definitions.
+
+  <h3> Values</h3>
+
+|       |     |
+| :---: | :--- |
+| **HAL_RTC_ALARM_DAY_TYPE_SEL_MONTHDAY** | Alarm day corresponds to the month day |
+| **HAL_RTC_ALARM_DAY_TYPE_SEL_WEEKDAY** | Alarm day corresponds to the week day  |
+
+
+  </TabItem>
+
+  <TabItem value="hal_rtc_alarm_t">
+  <h3> Definition</h3>
+
+    Alarm definitions.
+
+  <h3> Values</h3>
+
+|       |     |
+| :---: | :--- |
+| **HAL_RTC_ALARMA** | Alarm A |
+| **HAL_RTC_ALARMB** | Alarm B |
+
+  </TabItem>
+
+  <TabItem value="hal_rtc_alarm_auto_clear_t">
+  <h3> Definition</h3>
+
+    Alarm flag autoclear definitions.
+
+  <h3> Values</h3>
+
+|       |     |
+| :---: | :--- |
+| **HAL_ALARM_AUTO_CLEAR_DISABLE** | Autoclear of the alarm flag is disable |
+| **HAL_ALARM_AUTO_CLEAR_ENABLE** | Autoclear of the alarm flag is enable |
+
+  </TabItem>
+
+  <TabItem value="hal_rtc_alarm_subseconds_auto_reload_t">
+  <h3> Definition</h3>
+
+    Binary mode subseconds calendar register autoclear on alarm definitions. Only works in binary mode.
+
+  <h3> Values</h3>
+
+|       |     |
+| :---: | :--- |
+| **HAL_RTC_ALARM_SUBSECONDS_AUTO_RELOAD_DISABLE** | Disables the autoreload of calendar subseconds register |
+| **HAL_RTC_ALARM_SUBSECONDS_AUTO_RELOAD_ENABLE** | Enables the autoreload of the subseconds register |
+
+  </TabItem>
+</Tabs>
+
+---
+
+### Proposition 2
+
+### *hal_rtc_alarm_day_type_selection_t*
+
+Alarm date weekday definitions.
+
+|       |     |
+| :---: | :--- |
+| **HAL_RTC_ALARM_DAY_TYPE_SEL_MONTHDAY** | Alarm day corresponds to the month day |
+| **HAL_RTC_ALARM_DAY_TYPE_SEL_WEEKDAY** | Alarm day corresponds to the week day  |
+
+
+---
+
+### *hal_rtc_alarm_t*
+
+Alarm definitions.
+
+<details>
+<summary> Values </summary>
+
+|       |     |
+| :---: | :--- |
+| **HAL_RTC_ALARMA** | Alarm A |
+| **HAL_RTC_ALARMB** | Alarm B |
+
+</details>
+
+---
+
+### *hal_rtc_alarm_auto_clear_t*
+
+Alarm flag autoclear definitions.
+
+<details>
+<summary> Values </summary>
+
+|       |     |
+| :---: | :--- |
+| **HAL_ALARM_AUTO_CLEAR_DISABLE** | Autoclear of the alarm flag is disable |
+| **HAL_ALARM_AUTO_CLEAR_ENABLE** | Autoclear of the alarm flag is enable |
+
+</details>
+
+---
+
+### *hal_rtc_alarm_subseconds_auto_reload_t*
+
+Binary mode subseconds calendar register autoclear on alarm definitions. Only works in binary mode.
+
+<details>
+<summary> Values </summary>
+
+|       |     |
+| :---: | :--- |
+| **HAL_RTC_ALARM_SUBSECONDS_AUTO_RELOAD_DISABLE** | Disables the autoreload of calendar subseconds register |
+| **HAL_RTC_ALARM_SUBSECONDS_AUTO_RELOAD_ENABLE** | Enables the autoreload of the subseconds register |
+
+</details>
+
+-------------------------------
+
+Updated on 2023-10-05 at 10:57:34 +0200

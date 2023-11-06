@@ -1,0 +1,74 @@
+---
+title: RTC exported datetime enumerations.
+
+---
+
+# RTC exported datetime enumerations.
+
+
+## Types
+
+|                | Name           |
+| -------------- | -------------- |
+| enum| **hal_rtc_time_format_am_pm_t** { HAL_RTC_TIME_FORMAT_AM_OR_24 = LL_RTC_TIME_FORMAT_AM_OR_24, HAL_RTC_TIME_FORMAT_PM = LL_RTC_TIME_FORMAT_PM}<br/>AM PM definitions.  |
+| enum| **hal_rtc_month_t** { HAL_RTC_MONTH_JANUARY = LL_RTC_MONTH_JANUARY, HAL_RTC_MONTH_FEBRUARY = LL_RTC_MONTH_FEBRUARY, HAL_RTC_MONTH_MARCH = LL_RTC_MONTH_MARCH, HAL_RTC_MONTH_APRIL = LL_RTC_MONTH_APRIL, HAL_RTC_MONTH_MAY = LL_RTC_MONTH_MAY, HAL_RTC_MONTH_JUNE = LL_RTC_MONTH_JUNE, HAL_RTC_MONTH_JULY = LL_RTC_MONTH_JULY, HAL_RTC_MONTH_AUGUST = LL_RTC_MONTH_AUGUST, HAL_RTC_MONTH_SEPTEMBER = LL_RTC_MONTH_SEPTEMBER, HAL_RTC_MONTH_OCTOBER = LL_RTC_MONTH_OCTOBER, HAL_RTC_MONTH_NOVEMBER = LL_RTC_MONTH_NOVEMBER, HAL_RTC_MONTH_DECEMBER = LL_RTC_MONTH_DECEMBER}<br/>Month definitions.  |
+| enum| **hal_rtc_weekday_t** { HAL_RTC_WEEKDAY_MONDAY = LL_RTC_WEEKDAY_MONDAY, HAL_RTC_WEEKDAY_TUESDAY = LL_RTC_WEEKDAY_TUESDAY, HAL_RTC_WEEKDAY_WEDNESDAY = LL_RTC_WEEKDAY_WEDNESDAY, HAL_RTC_WEEKDAY_THURSDAY = LL_RTC_WEEKDAY_THURSDAY, HAL_RTC_WEEKDAY_FRIDAY = LL_RTC_WEEKDAY_FRIDAY, HAL_RTC_WEEKDAY_SATURDAY = LL_RTC_WEEKDAY_SATURDAY, HAL_RTC_WEEKDAY_SUNDAY = LL_RTC_WEEKDAY_SUNDAY}<br/>Weekday definitions.  |
+
+## Types Documentation
+
+### enum hal_rtc_time_format_am_pm_t
+
+| Enumerator | Value | Description |
+| ---------- | ----- | ----------- |
+| HAL_RTC_TIME_FORMAT_AM_OR_24 | LL_RTC_TIME_FORMAT_AM_OR_24|  If 12 hours format, hour is a.m.  |
+| HAL_RTC_TIME_FORMAT_PM | LL_RTC_TIME_FORMAT_PM|  Hour is p.m.  |
+
+
+
+AM PM definitions.
+
+### enum hal_rtc_month_t
+
+| Enumerator | Value | Description |
+| ---------- | ----- | ----------- |
+| HAL_RTC_MONTH_JANUARY | LL_RTC_MONTH_JANUARY|  January  |
+| HAL_RTC_MONTH_FEBRUARY | LL_RTC_MONTH_FEBRUARY|  February  |
+| HAL_RTC_MONTH_MARCH | LL_RTC_MONTH_MARCH|  March  |
+| HAL_RTC_MONTH_APRIL | LL_RTC_MONTH_APRIL|  April  |
+| HAL_RTC_MONTH_MAY | LL_RTC_MONTH_MAY|  May  |
+| HAL_RTC_MONTH_JUNE | LL_RTC_MONTH_JUNE|  June  |
+| HAL_RTC_MONTH_JULY | LL_RTC_MONTH_JULY|  July  |
+| HAL_RTC_MONTH_AUGUST | LL_RTC_MONTH_AUGUST|  August  |
+| HAL_RTC_MONTH_SEPTEMBER | LL_RTC_MONTH_SEPTEMBER|  September  |
+| HAL_RTC_MONTH_OCTOBER | LL_RTC_MONTH_OCTOBER|  October  |
+| HAL_RTC_MONTH_NOVEMBER | LL_RTC_MONTH_NOVEMBER|  November  |
+| HAL_RTC_MONTH_DECEMBER | LL_RTC_MONTH_DECEMBER|  December  |
+
+
+
+Month definitions.
+
+### enum hal_rtc_weekday_t
+
+| Enumerator | Value | Description |
+| ---------- | ----- | ----------- |
+| HAL_RTC_WEEKDAY_MONDAY | LL_RTC_WEEKDAY_MONDAY|  Monday  |
+| HAL_RTC_WEEKDAY_TUESDAY | LL_RTC_WEEKDAY_TUESDAY|  Tuesday  |
+| HAL_RTC_WEEKDAY_WEDNESDAY | LL_RTC_WEEKDAY_WEDNESDAY|  Wednesday  |
+| HAL_RTC_WEEKDAY_THURSDAY | LL_RTC_WEEKDAY_THURSDAY|  Thrusday  |
+| HAL_RTC_WEEKDAY_FRIDAY | LL_RTC_WEEKDAY_FRIDAY|  Friday  |
+| HAL_RTC_WEEKDAY_SATURDAY | LL_RTC_WEEKDAY_SATURDAY|  Saturday  |
+| HAL_RTC_WEEKDAY_SUNDAY | LL_RTC_WEEKDAY_SUNDAY|  Sunday  |
+
+
+
+Weekday definitions.
+
+
+
+
+
+
+-------------------------------
+
+Updated on 2023-10-05 at 10:57:34 +0200

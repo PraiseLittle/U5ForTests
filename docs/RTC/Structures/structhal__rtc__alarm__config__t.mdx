@@ -1,0 +1,119 @@
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+# RTC alarm configuration structure
+
+*hal_rtc_alarm_config_t*
+
+**Module:** STM32U5xx_HAL_Driver/RTC/RTC exported types
+
+Alarm structure.
+
+## Members
+
+
+
+* [hal_rtc_alarm_subseconds_auto_reload_t](../Enums/group__RTC__Exported__Enums__Alarm#enum-hal_rtc_alarm_subseconds_auto_reload_t) : **[*subsec_auto_reload*](../Structures/structhal__rtc__alarm__config__t#variable-subsec_auto_reload)**
+* [hal_rtc_alarm_auto_clear_t](../Enums/group__RTC__Exported__Enums__Alarm#enum-hal_rtc_alarm_auto_clear_t)  **[*auto_clear*](../Structures/structhal__rtc__alarm__config__t#variable-auto_clear)**
+
+## Members Documentation
+
+### Proposition 1
+
+<Tabs
+  defaultValue="subsec_auto_reload"
+  values={[
+    {label: 'subsec_auto_reload', value: 'subsec_auto_reload'},
+    {label: 'auto_clear', value: 'auto_clear'},
+  ]}>
+  <TabItem value="subsec_auto_reload">
+  <h3> Definition</h3>
+
+    Specifies if the subsecond register is reloaded. Only works in binary mode.
+
+  <h3> Values</h3>
+
+|       |     |
+| :---: | :--- |
+| **HAL_RTC_ALARM_SUBSECONDS_AUTO_RELOAD_DISABLE** | Disables the autoreload of calendar subseconds register |
+| **HAL_RTC_ALARM_SUBSECONDS_AUTO_RELOAD_ENABLE** | Enables the autoreload of the subseconds register  |
+
+
+  </TabItem>
+
+  <TabItem value="auto_clear">
+  <h3> Definition</h3>
+
+    Specifies if the alarm event is automatically cleared by hardware.
+
+  <h3> Values</h3>
+
+|       |     |
+| :---: | :--- |
+| **HAL_ALARM_AUTO_CLEAR_DISABLE** | Autoclear of the alarm flag is disable |
+| **HAL_ALARM_AUTO_CLEAR_ENABLE** | Autoclear of the alarm flag is enable |
+
+  </TabItem>
+</Tabs>
+
+---
+
+### Proposition 2
+
+|        |
+| :---: | :--- |
+| *subsec_auto_reload* | Specifies if the subsecond register is reloaded. Only works in binary mode. |
+| *auto_clear* | Specifies if the alarm event is automatically cleared by hardware |
+
+
+
+<details>
+<summary> Values </summary>
+
+```c title="subsec_auto_reload"
+ subsec_auto_reload = HAL_RTC_ALARM_SUBSECONDS_AUTO_RELOAD_DISABLE;
+ subsec_auto_reload = HAL_RTC_ALARM_SUBSECONDS_AUTO_RELOAD_ENABLE;
+```
+
+```c title="auto_clear"
+auto_clear = HAL_ALARM_AUTO_CLEAR_DISABLE;
+auto_clear = HAL_ALARM_AUTO_CLEAR_ENABLE;
+```
+
+</details>
+
+---
+
+### *subsec_auto_reload*
+
+Specifies if the subsecond register is reloaded. Only works in binary mode.
+
+<details>
+<summary> Values </summary>
+
+|       |     |
+| :---: | :--- |
+| **HAL_RTC_ALARM_SUBSECONDS_AUTO_RELOAD_DISABLE** | Disables the autoreload of calendar subseconds register |
+| **HAL_RTC_ALARM_SUBSECONDS_AUTO_RELOAD_ENABLE** | Enables the autoreload of the subseconds register  |
+
+</details>
+
+---
+
+### *auto_clear*
+
+Specifies if the alarm event is automatically cleared by hardware.
+
+<details>
+<summary> Values </summary>
+
+|       |     |
+| :---: | :--- |
+| **HAL_ALARM_AUTO_CLEAR_DISABLE** | Autoclear of the alarm flag is disable |
+| **HAL_ALARM_AUTO_CLEAR_ENABLE** | Autoclear of the alarm flag is enable |
+
+</details>
+
+-------------------------------
+
+Updated on 2023-10-05 at 10:57:34 +0200

@@ -67,7 +67,7 @@ const config = {
             sidebarId: 'tutorialSidebar',
             position: 'left',
             label: 'Documentation',
-            to: '/docs/RTC/',
+            to: '/docs/HAL/RTC/',
           },
         ],
       },
@@ -79,7 +79,7 @@ const config = {
             items: [
               {
                 label: 'Documentation',
-                to: '/docs/RTC/',
+                to: '/docs/HAL/RTC/',
               },
             ],
           },

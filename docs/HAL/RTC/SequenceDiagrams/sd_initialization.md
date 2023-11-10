@@ -1,5 +1,4 @@
 ---
-sidebar_position: 1
 keywords:
     - RTC
     - RTC initialization
@@ -11,7 +10,6 @@ keywords:
 tags:
     - HAL
     - Drivers
-draft: true
 ---
 
 # RTC initialization user sequence {#dynamic_init_behavior}

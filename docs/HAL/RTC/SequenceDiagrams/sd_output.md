@@ -10,7 +10,6 @@ keywords:
 tags:
     - HAL
     - Drivers
-draft: true
 ---
 
 # Output user sequence {#dynamic_output_behavior}

@@ -9,7 +9,6 @@ keywords:
 tags:
     - HAL
     - Drivers
-draft: true
 ---
 
 # Calendar user sequence {#dynamic_calendar_behavior}

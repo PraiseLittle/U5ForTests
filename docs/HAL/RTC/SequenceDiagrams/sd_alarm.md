@@ -1,5 +1,4 @@
 ---
-sidebar_position: 3
 keywords:
     - RTC
     - Alarm
@@ -10,7 +9,6 @@ keywords:
 tags:
     - HAL
     - Drivers
-draft: true
 ---
 
 # Alarms description

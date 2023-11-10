@@ -10,7 +10,6 @@ keywords:
 tags:
     - HAL
     - Drivers
-draft: true
 ---
 
 # Timestamp user sequence {#dynamic_timestamp_behavior}

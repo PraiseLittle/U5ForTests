@@ -10,7 +10,6 @@ keywords:
 tags:
     - HAL
     - Drivers
-draft: true
 ---
 
 # Wake-up timer user sequence {#dynamic_wakeup_behavior}
